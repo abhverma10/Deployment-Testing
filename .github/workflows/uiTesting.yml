@@ -1,0 +1,32 @@
+name: Deployment UI Testing
+
+on:
+  workflow_dispatch:
+    inputs:
+      env:
+        type: choice
+        description: Which environment do you want to deploy to?
+        options:
+          - development
+          - staging
+      name:
+        description: Which brands you want to deploy?
+      all:
+        type: boolean
+        description: All Sites
+      ks-us:
+        type: boolean
+        description: Katespade
+      kss-us:
+        type: boolean
+        description: Katespade Surprise
+        
+jobs:
+  display:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "${{github.event.inputs.env}}"
+            echo "${{github.event.inputs.all}}"   
+            echo "${{github.event.inputs.ks-us}}"
+            echo ${{github.event.inputs.kss-us}}    
